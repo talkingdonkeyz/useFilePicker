@@ -34,8 +34,8 @@ function useImperativeFilePicker<
       // override the files property to return all files that were selected previously and in the current batch
       onFilesSelected({
         errors: undefined,
-        plainFiles: [...allPlainFiles, ...(data.plainFiles || [])],
-        filesContent: [...allFilesContent, ...(data.filesContent || [])] as any,
+        plainFiles: data.plainFiles || [],
+        filesContent: data.filesContent || ([] as any),
       });
     },
     onFilesSuccessfullySelected: (data: SelectedFiles<any>) => {
@@ -45,8 +45,8 @@ function useImperativeFilePicker<
       if (!onFilesSuccessfullySelected) return;
       // override the files property to return all files that were selected previously and in the current batch
       onFilesSuccessfullySelected({
-        plainFiles: [...allPlainFiles, ...(data.plainFiles || [])],
-        filesContent: [...allFilesContent, ...(data.filesContent || [])],
+        plainFiles: data.plainFiles || [],
+        filesContent: data.filesContent || [],
       });
     },
   });
