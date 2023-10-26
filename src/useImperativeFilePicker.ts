@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   ExtractContentTypeFromConfig,
   FileContent,
@@ -20,6 +20,9 @@ function useImperativeFilePicker<
 
   const [allPlainFiles, setAllPlainFiles] = useState<File[]>([]);
   const [allFilesContent, setAllFilesContent] = useState<FileContent<ExtractContentTypeFromConfig<ConfigType>>[]>([]);
+
+  useEffect(() => console.log('useImperativeFilePicker: allPlainFiles', allPlainFiles), [allPlainFiles]);
+  useEffect(() => console.log('useImperativeFilePicker: setAllFilesContent', setAllFilesContent), [setAllFilesContent]);
 
   const { openFilePicker, loading, errors, clear } = useFilePicker<CustomErrors, ConfigType>({
     ...props,
